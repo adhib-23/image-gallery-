@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery with Lightbox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Pacifico', cursive;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDsou-9Yj0s2NTQ1pGx4zvMQj12BW1NUvgLA&s');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #0ff;
+            text-shadow: 0 0 8px #0ff, 0 0 16px #0ff;
+            margin: 20px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .gallery img {
+            width: 150px;
+            height: auto;
+            margin: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .lightbox:target {
+            display: flex;
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close:hover {
+            color: #ff0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Image Gallery</h1>
+<div class="gallery">
+    <!-- Images -->
+    <a href="#img1"><img src="https://www.iamabiker.com/wp-content/uploads/2021/02/2021-suzuki-hayabusa-6.jpg" alt="Image 1"></a>
+    <a href="#img2"><img src="https://i.pinimg.com/originals/5f/1e/38/5f1e38842d31dcc86a613d6aaa821d7d.jpg" alt="Image 2"></a>
+    <a href="#img3"><img src="https://luxurylaunches.com/wp-content/uploads/2020/11/Lamborghini-Motorcycles.jpg" alt="Image 3"></a>
+    <a href="#img4"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoi8Hgf5TBlJan5XC7XAy6o6kmV5Up0LqrMA&s" alt="Image 4"></a>
+    <a href="#img5"><img src="https://cdni.autocarindia.com/ExtraImages/20240703115235_10%20_38_.png" alt="Image 5"></a>
+    <a href="#img6"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCTuJljMqrBOr3S1ZXJTyIMvSYL9Es7kGHrg&s" alt="Image 6"></a>
+    <a href="#img7"><img src="https://i.pinimg.com/736x/18/ed/a8/18eda88a8c91653c073c4272e20c9cfb.jpg" alt="Image 7"></a>
+    <a href="#img8"><img src="https://www.topgear.com/sites/default/files/2021/12/18.%20Koenigsegg%20Jesko.jpeg" alt="Image 8"></a>
+    <a href="#img9"><img src="https://static.vecteezy.com/system/resources/thumbnails/023/467/598/small/futuristic-custom-angled-light-motorcycle-concept-with-glowing-blue-tones-neural-network-generated-art-photo.jpg" alt="Image 9"></a>
+    <a href="#img10"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6yCeKK0E1NK6U9Kj60Y-SzJpYs9KafxETKQ&s" alt="Image 10"></a>
+    <a href="#img11"><img src="https://robbreport.com/wp-content/uploads/2021/12/29.jpg?w=800" alt="Image 11"></a>
+    <a href="#img12"><img src="https://www.kardesignkoncepts.com/wp-content/uploads/2024/01/TESLA-WEB-1024x712.jpg" alt="Image 12"></a>
+    <a href="#img13"><img src="https://wallpapers.com/images/hd/supercar-lamborghini-terzo-millennio-vw9oq25xywxmvulg.jpg" alt="Image 13"></a>
+    <a href="#img14"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJEXmjD_QSkHzbXrPIKiCuuu0hUSFE1fGfOw&s" alt="Image 14"></a>
+    <a href="#img15"><img src="https://www.cartoq.com/wp-content/uploads/2022/01/Vazirani_2.jpg" alt="Image 15"></a>
+    <a href="#img16"><img src="https://images.livemint.com/img/2021/09/08/600x338/F77_-_Airstrike_(Indoor)_1631117821441_1631117836056.jpg" alt="Image 16"></a>
+</div>
+
+<!-- Lightbox for each image -->
+<div id="img1" class="lightbox"><span class="close" onclick="document.getElementById('img1').style.display='none'">&times;</span><img src="https://www.iamabiker.com/wp-content/uploads/2021/02/2021-suzuki-hayabusa-6.jpg" alt="Image 1"></div>
+<div id="img2" class="lightbox"><span class="close" onclick="document.getElementById('img2').style.display='none'">&times;</span><img src="https://i.pinimg.com/originals/5f/1e/38/5f1e38842d31dcc86a613d6aaa821d7d.jpg" alt="Image 2"></div>
+<div id="img3" class="lightbox"><span class="close" onclick="document.getElementById('img3').style.display='none'">&times;</span><img src="https://luxurylaunches.com/wp-content/uploads/2020/11/Lamborghini-Motorcycles.jpg" alt="Image 3"></div>
+<div id="img4" class="lightbox"><span class="close" onclick="document.getElementById('img4').style.display='none'">&times;</span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoi8Hgf5TBlJan5XC7XAy6o6kmV5Up0LqrMA&s" alt="Image 4"></div>
+<div id="img5" class="lightbox"><span class="close" onclick="document.getElementById('img5').style.display='none'">&times;</span><img src="https://cdni.autocarindia.com/ExtraImages/20240703115235_10%20_38_.png" alt="Image 5"></div>
+<div id="img6" class="lightbox"><span class="close" onclick="document.getElementById('img6').style.display='none'">&times;</span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCTuJljMqrBOr3S1ZXJTyIMvSYL9Es7kGHrg&s" alt="Image 6"></div>
+<div id="img7" class="lightbox"><span class="close" onclick="document.getElementById('img7').style.display='none'">&times;</span><img src="https://www.motorcyclecruiser.com/resizer/B5IfdK-7NVCS8Ce6KfnU1_nqBdY=/arc-photo-oembed/public/Gallery/2019/01/suzuki-hayabusa-right-side.jpg" alt="Image 7"></div>
+<div id="img8" class="lightbox"><span class="close" onclick="document.getElementById('img8').style.display='none'">&times;</span><img src="https://cdn.motor1.com/images/mgl/Ow1vE/s1/mercedes-amg-g63-vs-lamborghini-urus.webp" alt="Image 8"></div>
+<div id="img9" class="lightbox"><span class="close" onclick="document.getElementById('img9').style.display='none'">&times;</span><img src="https://hips.hearstapps.com/hmg-prod/images/2017-audi-r8-v10-003-1494281771.jpg" alt="Image 9"></div>
+
+<!-- Add more lightboxes up to img16 following the same format -->
+
+</body>
+</html>
